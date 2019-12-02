@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Todo from "./Todo";
+import AddForm from "./AddForm";
 
-function App() {
+const todosArray = [
+  {
+    id: 1,
+    content: "This is my first todo"
+  },
+  {
+    id: 2,
+    content: "This is my secons todo"
+  },
+  {
+    id: 3,
+    content: "This is my third todo"
+  }
+];
+
+const App = () => {
+  const [todos, settodos] = useState(todosArray);
+
+  const deleteTodo = id => {
+    const deleteTodos = todos.filter(todo => {
+      return todo.id !== id;
+    });
+    settodos(deleteTodos);
+  };
+  const addTodo = todo => {
+    const myobj = { content: todo };
+    myobj.id = Math.floor(Math.random() * 10);
+    settodos([...todos, myobj]);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h2>TODO's</h2>
+      <Todo todo={todos} deleteTodo={deleteTodo} />
+      <AddForm addTodo={addTodo} />
     </div>
   );
-}
+};
 
 export default App;
