@@ -34,7 +34,7 @@ const App = () => {
   };
   return (
     <div>
-      <h2>TODO's</h2>
+      <h3>TODO's</h3>
       <Todo todo={todos} deleteTodo={deleteTodo} />
       <AddForm addTodo={addTodo} />
     </div>

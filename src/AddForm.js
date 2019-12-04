@@ -14,7 +14,6 @@ const AddForm = ({ addTodo }) => {
     e.preventDefault();
     addTodo(newTodo.current);
     setCurrent({content: ''});
-
   };
 
   return (
