@@ -27,9 +27,10 @@ const App = () => {
     settodos(deleteTodos);
   };
   const addTodo = todo => {
-    const myobj = { content: todo };
+    let myobj = { content: todo };
     myobj.id = Math.floor(Math.random() * 10);
     settodos([...todos, myobj]);
+    myobj = { content: '' }
   };
   return (
     <div>
